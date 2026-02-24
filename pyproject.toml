@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "probe-llm"
+version = "0.1.0"
+description = "Behavioral testing framework for LLMs — test properties, not benchmarks."
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [{name = "Your Name", email = "you@example.com"}]
+keywords = ["llm", "testing", "metamorphic", "behavioral", "evaluation"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Testing",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "click>=8.0",
+    "rich>=13.0",
+    "httpx>=0.25",
+    "pyyaml>=6.0",
+    "sentence-transformers>=2.2",
+    "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+openai = ["openai>=1.0"]
+anthropic = ["anthropic>=0.30"]
+all = ["openai>=1.0", "anthropic>=0.30"]
+dev = ["pytest>=7.0", "ruff>=0.1", "mypy>=1.0"]
+
+[project.scripts]
+probe = "probe.cli.main:cli"
+
+[project.urls]
+Homepage = "https://github.com/yourname/probe"
+
+[tool.setuptools.packages.find]
+include = ["probe*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
